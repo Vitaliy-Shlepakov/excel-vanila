@@ -1,1 +1,3 @@
-import './index.sass'
+import './scss/index.scss'
+
+console.log('Working!')
