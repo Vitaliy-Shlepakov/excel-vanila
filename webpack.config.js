@@ -5,6 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
+const isDev = !isProd;
 
 const fileName = ext => !isProd
     ? `bundle.${ext}`
@@ -13,15 +14,20 @@ const fileName = ext => !isProd
 const jsLoaders = () => {
     const loaders = [
         {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-                presets: ['@babel/preset-env']
-            }
+                presets: ['@babel/preset-env'],
+                plugins: ['@babel/plugin-proposal-class-properties']
+            },
+
         }
     ]
-    if(!isProd){
+
+    if (isDev) {
         loaders.push('eslint-loader')
     }
+
+    return loaders
 }
 
 module.exports = {

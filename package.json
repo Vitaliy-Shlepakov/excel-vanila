@@ -9,6 +9,7 @@
   "author": "vik",
   "license": "MIT",
   "dependencies": {
+    "@babel/plugin-syntax-class-properties": "^7.10.4",
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
