@@ -5,6 +5,8 @@ class DOM {
             : selector
     };
 
+    $$listeners = {};
+
     html = html => {
         if(typeof html === 'string'){
             this.$el.innerHTML = html;
@@ -25,7 +27,15 @@ class DOM {
             this.$el.appendChild(node)
         }
         return this;
-    }
+    };
+
+    on(eventType, callback) {
+        this.$el.addEventListener(eventType, callback)
+    };
+
+    off(eventType, callback) {
+        this.$el.removeEventListener(eventType, callback)
+    };
 }
 
 export function $(selector){
